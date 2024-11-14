@@ -25,6 +25,10 @@ public class DiagramEntity {
     private String image;
 
     @ManyToOne
+    @JoinColumn(name = "categoria_id")
+    private CategoryEntity category;
+
+    @ManyToMany
     @JoinTable(
             name = "model_diagram",
             joinColumns = @JoinColumn(name = "diagram_id"),
