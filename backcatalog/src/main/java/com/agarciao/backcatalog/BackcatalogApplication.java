@@ -1,10 +1,18 @@
 package com.agarciao.backcatalog;
 
+import com.agarciao.backcatalog.persistence.entity.user.PermissionEntity;
+import com.agarciao.backcatalog.persistence.entity.user.RoleEntity;
+import com.agarciao.backcatalog.persistence.entity.user.RoleEnum;
+import com.agarciao.backcatalog.persistence.entity.user.UserEntity;
 import com.agarciao.backcatalog.persistence.repository.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Set;
 
 @SpringBootApplication
 public class BackcatalogApplication {
@@ -13,6 +21,7 @@ public class BackcatalogApplication {
 		SpringApplication.run(BackcatalogApplication.class, args);
 	}
 /*
+
 	@Bean
 	CommandLineRunner init(UserRepository userRepository){
 		return args -> {
@@ -127,4 +136,5 @@ public class BackcatalogApplication {
 
 	}
 */
+
 }

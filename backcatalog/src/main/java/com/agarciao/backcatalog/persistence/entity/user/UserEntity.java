@@ -32,7 +32,7 @@ public class UserEntity {
     private boolean accountNoExpired = true; //la cuenta no ha expirado
 
     @Column(name = "account_No_Locked")
-    private boolean acountNoLocked = true; //La cuenta no esta bloqueada
+    private boolean accountNoLocked = true; //La cuenta no esta bloqueada
 
     @Column(name = "credential_No_Expired")
     private boolean credentialNoExpired = true; //las credenciales no estan expidaras
