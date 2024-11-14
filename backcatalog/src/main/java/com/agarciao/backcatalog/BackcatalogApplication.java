@@ -21,8 +21,8 @@ public class BackcatalogApplication {
 		SpringApplication.run(BackcatalogApplication.class, args);
 	}
 
-/*
 
+/*
 	@Bean
 	CommandLineRunner init(UserRepository userRepository){
 		return args -> {
@@ -68,7 +68,7 @@ public class BackcatalogApplication {
 			//Create users
 			UserEntity userAndy = UserEntity.builder()
 					.username("Andy")
-					.password("$2a$10$7lselJxx/vhxOqlt.f09pe5wSugKbk1Dbfn5dblmaSeMpJbpaTSHC")
+					.password("$2a$10$zoz3iAn//lTGHVvvZseIXuGTXRK/giEY28.u60pMW2JlUz5mUOyfC")
 					.isEnable(true)
 					.accountNoExpired(true)
 					.accountNoLocked(true)
@@ -79,7 +79,7 @@ public class BackcatalogApplication {
 
 			UserEntity userCristian = UserEntity.builder()
 					.username("Cristian")
-					.password("$2a$10$7lselJxx/vhxOqlt.f09pe5wSugKbk1Dbfn5dblmaSeMpJbpaTSHC")
+					.password("$2a$10$zoz3iAn//lTGHVvvZseIXuGTXRK/giEY28.u60pMW2JlUz5mUOyfC")
 					.isEnable(true)
 					.accountNoExpired(true)
 					.accountNoLocked(true)
@@ -90,7 +90,7 @@ public class BackcatalogApplication {
 
 			UserEntity userLeo = UserEntity.builder()
 					.username("Leo")
-					.password("$2a$10$7lselJxx/vhxOqlt.f09pe5wSugKbk1Dbfn5dblmaSeMpJbpaTSHC")
+					.password("$2a$10$zoz3iAn//lTGHVvvZseIXuGTXRK/giEY28.u60pMW2JlUz5mUOyfC")
 					.isEnable(true)
 					.accountNoExpired(true)
 					.accountNoLocked(true)
@@ -101,7 +101,7 @@ public class BackcatalogApplication {
 
 			UserEntity userJuan = UserEntity.builder()
 					.username("Juan")
-					.password("$2a$10$7lselJxx/vhxOqlt.f09pe5wSugKbk1Dbfn5dblmaSeMpJbpaTSHC")
+					.password("$2a$10$zoz3iAn//lTGHVvvZseIXuGTXRK/giEY28.u60pMW2JlUz5mUOyfC")
 					.isEnable(true)
 					.accountNoExpired(true)
 					.accountNoLocked(true)
@@ -112,7 +112,7 @@ public class BackcatalogApplication {
 
 			UserEntity userPablo = UserEntity.builder()
 					.username("Pablo")
-					.password("$2a$10$7lselJxx/vhxOqlt.f09pe5wSugKbk1Dbfn5dblmaSeMpJbpaTSHC")
+					.password("$2a$10$zoz3iAn//lTGHVvvZseIXuGTXRK/giEY28.u60pMW2JlUz5mUOyfC")
 					.isEnable(true)
 					.accountNoExpired(true)
 					.accountNoLocked(true)
@@ -123,7 +123,7 @@ public class BackcatalogApplication {
 
 			UserEntity userDavid = UserEntity.builder()
 					.username("David")
-					.password("$2a$10$7lselJxx/vhxOqlt.f09pe5wSugKbk1Dbfn5dblmaSeMpJbpaTSHC")
+					.password("$2a$10$zoz3iAn//lTGHVvvZseIXuGTXRK/giEY28.u60pMW2JlUz5mUOyfC")
 					.isEnable(true)
 					.accountNoExpired(true)
 					.accountNoLocked(true)
@@ -136,7 +136,7 @@ public class BackcatalogApplication {
 		};
 
 	}
-*/
 
+*/
 
 }
