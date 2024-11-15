@@ -23,7 +23,7 @@ public class UsersController {
     private UserRepository userRepository;
     @GetMapping("/list")
     @ResponseStatus(HttpStatus.OK)
-    @PreAuthorize("hasRole('ADMIN') or hasRole('Developer')")
+    @PreAuthorize("hasRole('ADMIN') or hasRole('DEVELOPER')")
     public Iterable<UserEntity> userList(){
         return userRepository.findAll();
     }
