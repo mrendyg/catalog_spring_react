@@ -37,6 +37,9 @@ public class UsersController {
     }
 
     //CReacion de usuarios
+    @PostMapping(value = "/create")
+    @ResponseStatus(HttpStatus.OK)
+    @PreAuthorize("hasRole('ADMIN') or hasRole('DEVELOPER')")
     public UserEntity createUser(@RequestBody UserDTO userDTO){
         UserEntity user = new UserEntity();
         user.setUsername(userDTO.getUsername());
