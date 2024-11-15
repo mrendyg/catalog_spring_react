@@ -29,16 +29,23 @@ public class SecurityConfig {
                 .httpBasic(Customizer.withDefaults())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(
-                        http -> {
+                    http -> {
 
-                            http.requestMatchers(HttpMethod.GET, "/auth/users/list").hasAnyRole("DEVELOPER", "ADMIN");
-                            http.requestMatchers(HttpMethod.GET, "/auth/users/{id}").hasAnyRole("DEVELOPER", "ADMIN");
-                            http.requestMatchers(HttpMethod.POST, "/auth/users/create").hasAnyRole("DEVELOPER", "ADMIN");
-                            http.requestMatchers(HttpMethod.PUT, "/auth/users/update/{id}").hasAnyRole("DEVELOPER", "ADMIN");
-                            http.requestMatchers(HttpMethod.DELETE, "/auth/users/delete/{id}").hasAnyRole("DEVELOPER");
+                        http.requestMatchers(HttpMethod.GET, "/auth/users/list").hasAnyRole("DEVELOPER", "ADMIN");
+                        http.requestMatchers(HttpMethod.GET, "/auth/users/{id}").hasAnyRole("DEVELOPER", "ADMIN");
+                        http.requestMatchers(HttpMethod.POST, "/auth/users/create").hasAnyRole("DEVELOPER", "ADMIN");
+                        http.requestMatchers(HttpMethod.PUT, "/auth/users/update/{id}").hasAnyRole("DEVELOPER", "ADMIN");
+                        http.requestMatchers(HttpMethod.DELETE, "/auth/users/delete/{id}").hasAnyRole("DEVELOPER");
 
-                            http.anyRequest().denyAll();
-                        }
+                        http.requestMatchers(HttpMethod.GET, "/auth/diagram/list").hasAnyAuthority("READ");
+                        http.requestMatchers(HttpMethod.GET, "/auth/diagram/{id}").hasAnyAuthority("READ");
+                        http.requestMatchers(HttpMethod.POST, "/auth/diagram/create").hasAnyRole("DEVELOPER", "ADMIN");
+                        http.requestMatchers(HttpMethod.PUT, "/auth/diagram/update/{id}").hasAnyRole("DEVELOPER", "ADMIN");
+                        http.requestMatchers(HttpMethod.DELETE, "/auth/diagram/delete/{id}").hasAnyRole("DEVELOPER");
+
+
+                        http.anyRequest().denyAll();
+                    }
                 )
                 .build();
     }
