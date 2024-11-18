@@ -1,2 +1,4 @@
-package com.agarciao.backcatalog.service.vehicle;public class BrandController {
+package com.agarciao.backcatalog.service.vehicle;
+
+public class BrandController {
 }
