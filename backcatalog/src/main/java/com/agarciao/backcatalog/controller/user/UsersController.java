@@ -39,8 +39,8 @@ public class UsersController {
     //Creation of users
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/create")
-    @PreAuthorize("hasAuthority('CREATE')")
-    public UserEntity createUser(@RequestBody UserDTO userDTO) {
+    @PreAuthorize("hasRole('ADMIN') or hasRole('DEVELOPER')")
+    public UserEntity createUser(@RequestBody UserDTO userDTO){
         UserEntity user = new UserEntity();
         user.setUsername(userDTO.getUsername());
         user.setPassword(userDTO.getPassword());
