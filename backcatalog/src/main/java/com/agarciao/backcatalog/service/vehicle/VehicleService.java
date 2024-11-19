@@ -28,6 +28,7 @@ public class VehicleService {
         return vehicleRepository.save(vehicle);
     }
 
+
     //Update an existing vehicle
     public VehicleEntity updateVehicle(long id, VehicleEntity vehicle){
         VehicleEntity updatedVehicle = vehicleRepository.findById(id).get();
