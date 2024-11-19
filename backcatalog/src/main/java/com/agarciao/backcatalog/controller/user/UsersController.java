@@ -5,7 +5,7 @@ import com.agarciao.backcatalog.persistence.entity.user.UserEntity;
 import com.agarciao.backcatalog.persistence.repository.UserRepository;
 import com.agarciao.backcatalog.service.user.UserService;
 import lombok.AllArgsConstructor;
-import org.aspectj.lang.annotation.DeclareError;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -17,12 +17,10 @@ import org.springframework.web.bind.annotation.*;
 @PreAuthorize("denyAll()")
 public class UsersController {
 
+    @Autowired
     private UserService userService;
 
-    //Lista de usuarios
-    private UserRepository userRepository;
-
-
+    //List of users
     @GetMapping("/list")
     @ResponseStatus(HttpStatus.OK)
     @PreAuthorize("hasRole('ADMIN') or hasRole('DEVELOPER')")
@@ -30,7 +28,7 @@ public class UsersController {
         return userService.findAll();
     }
 
-    //busqueda de ususarios por ID
+    //User by id
     @GetMapping(value = "/{id}")
     @ResponseStatus(HttpStatus.OK)
     @PreAuthorize("hasRole('ADMIN') or hasRole('DEVELOPER')")
@@ -38,23 +36,18 @@ public class UsersController {
         return userService.findById(id);
     }
 
-    //CReacion de usuarios
-<<<<<<< HEAD
-    @PostMapping(value = "/create")
-    @ResponseStatus(HttpStatus.OK)
-=======
-    @PostMapping(value = "/update/{id}")
-    @ResponseStatus(HttpStatus.ACCEPTED)
->>>>>>> d3118a9d8db03d9761765bad310b87b5142f054e
-    @PreAuthorize("hasRole('ADMIN') or hasRole('DEVELOPER')")
-    public UserEntity createUser(@RequestBody UserDTO userDTO){
+    //Creation of users
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping("/create")
+    @PreAuthorize("hasAuthority('CREATE')")
+    public UserEntity createUser(@RequestBody UserDTO userDTO) {
         UserEntity user = new UserEntity();
         user.setUsername(userDTO.getUsername());
         user.setPassword(userDTO.getPassword());
         return userService.createsUser(user, userDTO.getPassword());
     }
 
-    //Actualizacion de asuarios
+    //Update users
     @ResponseStatus(HttpStatus.ACCEPTED)
     @PutMapping("/update/{id}")
     @PreAuthorize("hasRole('DEVELOPER') or hasRole('ADMIN')")
@@ -62,6 +55,7 @@ public class UsersController {
         return userService.updatesUser(id, user);
     }
 
+    //Delete user by id
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/delete/{id}")
     @PreAuthorize("hasRole('DEVELOPER')")
