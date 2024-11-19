@@ -43,6 +43,12 @@ public class SecurityConfig {
                         http.requestMatchers(HttpMethod.PUT, "/auth/diagram/update/{id}").hasAnyRole("DEVELOPER", "ADMIN");
                         http.requestMatchers(HttpMethod.DELETE, "/auth/diagram/delete/{id}").hasAnyRole("DEVELOPER");
 
+                        http.requestMatchers(HttpMethod.GET, "/auth/concessionaire/list").hasAnyRole("DEVELOPER", "ADMIN");
+                        http.requestMatchers(HttpMethod.GET, "/auth/concessionaire/{id}").hasAnyRole("DEVELOPER", "ADMIN");
+                        http.requestMatchers(HttpMethod.POST, "/auth/concessionaire/create").hasAnyRole("DEVELOPER", "ADMIN");
+                        http.requestMatchers(HttpMethod.PUT, "/auth/concessionaire/update/{id}").hasAnyRole("DEVELOPER", "ADMIN");
+                        http.requestMatchers(HttpMethod.DELETE, "/auth/concessionaire/delete/{id}").hasAnyRole("DEVELOPER");
+
 
                         http.anyRequest().denyAll();
                     }
