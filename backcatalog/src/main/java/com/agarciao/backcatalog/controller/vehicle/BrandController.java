@@ -14,9 +14,11 @@ import java.util.List;
 @PreAuthorize("denyAll()")
 public class BrandController {
 
+    //The logic of each function is found in the service
     @Autowired
     private BrandService brandService;
 
+    //List of brand
     @GetMapping("/list")
     @ResponseStatus(HttpStatus.OK)
     @PreAuthorize("hasAuthority('READ')")
@@ -24,6 +26,7 @@ public class BrandController {
         return brandService.getsListBrand();
     }
 
+    //Brand by id
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     @PreAuthorize("hasAuthority('READ')")
@@ -31,6 +34,7 @@ public class BrandController {
         return brandService.getsIdBrand(id);
     }
 
+    //Create brands
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
     @PreAuthorize("hasAuthority('CREATE')")
@@ -38,6 +42,7 @@ public class BrandController {
         return brandService.createsBrand(brand);
     }
 
+    //Update brand
     @PutMapping("/update/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
     @PreAuthorize("hasAuthority('UPDATE')")
@@ -45,7 +50,7 @@ public class BrandController {
         return brandService.updatesBrand(id, brand);
     }
 
-
+    //Delete brand by id
     @DeleteMapping("/delete/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
     @PreAuthorize("hasRole('ADMIN') or hasRole('DEVELOPER')")

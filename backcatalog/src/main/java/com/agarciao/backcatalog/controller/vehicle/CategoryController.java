@@ -14,9 +14,11 @@ import java.util.List;
 @PreAuthorize("denyAll()")
 public class CategoryController {
 
+    //The logic of each function is found in the service
     @Autowired
     private CategoryService categoryService;
 
+    //List of category
     @GetMapping("/list")
     @PreAuthorize("hasAuthority('READ')")
     @ResponseStatus(HttpStatus.OK)
@@ -24,13 +26,15 @@ public class CategoryController {
         return categoryService.getsCategoryList();
     }
 
+    //Category by id
     @GetMapping("/{id}")
     @PreAuthorize("hasAuthority('READ')")
     @ResponseStatus(HttpStatus.OK)
-    public CategoryEntity getCategory(@PathVariable Long id){
+    public CategoryEntity getIdCategory(@PathVariable Long id){
         return categoryService.getsIDCategory(id);
     }
 
+    //Create Category
     @PostMapping("/create")
     @PreAuthorize("hasRole('ADMIN') or hasRole('DEVELOPER')")
     @ResponseStatus(HttpStatus.CREATED)
@@ -38,6 +42,7 @@ public class CategoryController {
         return categoryService.createsCategory(category);
     }
 
+    //Update Category
     @PutMapping("/update/{id}")
     @PreAuthorize("hasRole('ADMIN') or hasRole('DEVELOPER')")
     @ResponseStatus(HttpStatus.ACCEPTED)
@@ -45,6 +50,7 @@ public class CategoryController {
         return categoryService.updatesCategory(id, category);
     }
 
+    //Delete category by id
     @DeleteMapping("/delete/{id}")
     @PreAuthorize("hasRole('DEVELOPER')")
     @ResponseStatus(HttpStatus.NO_CONTENT)

@@ -16,25 +16,30 @@ public class CategoryService {
     @Autowired
     private CategoryRepository categoryRepository;
 
+    //List of Category
     public List<CategoryEntity> getsCategoryList(){
         List<CategoryEntity> list = categoryRepository.findAll();
         list.sort(Comparator.comparing(CategoryEntity::getId));
         return list;
     }
 
+    //Category by id
     public CategoryEntity getsIDCategory(long id){
         return categoryRepository.findById(id).orElse(null);
     }
 
+    //Create Category
     public CategoryEntity createsCategory(CategoryEntity category){
         return categoryRepository.save(category);
     }
 
+    //Update Category
     public CategoryEntity updatesCategory(long id, CategoryEntity category){
         CategoryEntity updatedCategory = categoryRepository.findById(id).get();
         return categoryRepository.save(updatedCategory);
     }
 
+    //Delete Category
     public void deletesCategory(long id){
         Optional<CategoryEntity> optionalCategory = categoryRepository.findById(id);
         if (optionalCategory.isPresent()) {

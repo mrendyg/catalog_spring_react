@@ -18,14 +18,15 @@ public class ConcessionaireController {
     @Autowired
     private ConcessionaireService concessionaireService;
 
+    //List of concessionaire
     @GetMapping("/list")
     @ResponseStatus(HttpStatus.OK)
     @PreAuthorize("hasRole('ADMIN') or hasRole('DEVELOPER')")
-
     public List<ConcessionaireEntity> getListConcessionarie(){
         return concessionaireService.getsListConcessionaire();
     }
 
+    //Concessionaire by id
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     @PreAuthorize("hasRole('ADMIN') or hasRole('DEVELOPER')")
@@ -33,6 +34,7 @@ public class ConcessionaireController {
         return concessionaireService.getsIdConcessionaire(id);
     }
 
+    //Create concessionaire
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
     @PreAuthorize("hasRole('ADMIN') or hasRole('DEVELOPER')")
@@ -40,18 +42,18 @@ public class ConcessionaireController {
         return concessionaireService.createsConcessionaire(concessionaire);
     }
 
+    //Update concessionaire
     @PutMapping("/update/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
     @PreAuthorize("hasRole('ADMIN') or hasRole('DEVELOPER')")
-
     public ConcessionaireEntity updateConcessionaire(@PathVariable long id, @RequestBody ConcessionaireEntity concessionaire){
         return concessionaireService.updatesConcessionaire(id, concessionaire);
     }
 
+    //Delete concessionaire by id
     @DeleteMapping("/delete/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PreAuthorize("hasRole('ADMIN') or hasRole('DEVELOPER')")
-
     public void deleteConcessionaire(@PathVariable Long id){
         concessionaireService.deletesConcessionaire(id);
     }

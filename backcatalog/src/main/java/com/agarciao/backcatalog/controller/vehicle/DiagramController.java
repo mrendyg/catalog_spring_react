@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.*;
 @PreAuthorize("denyAll()")
 public class DiagramController {
 
+    //The logic of each function is found in the Service
     @Autowired
     private DiagramService diagramService;
 
+    //List of diagram
     @GetMapping("/list")
     @PreAuthorize("hasAuthority('READ')")
     @ResponseStatus(HttpStatus.OK)
@@ -22,6 +24,7 @@ public class DiagramController {
         return diagramService.getsDiagramList();
     }
 
+    //Diagram by id
     @GetMapping("/{id}")
     @PreAuthorize("hasAuthorities('READ')")
     @ResponseStatus(HttpStatus.OK)
@@ -29,6 +32,7 @@ public class DiagramController {
         return diagramService.getsIdDiagram(id);
     }
 
+    //Create Diagram
     @PostMapping(value = "/create")
     @ResponseStatus(HttpStatus.CREATED)
     @PreAuthorize("hasAuthorities('CREATE')")
@@ -36,6 +40,7 @@ public class DiagramController {
         return diagramService.createsDiagram(diagram);
     }
 
+    //Update Diagram
     @PutMapping(value = "/update/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
     @PreAuthorize("hasAuthorities('UPDATE')")
@@ -43,6 +48,7 @@ public class DiagramController {
         return diagramService.updatesDiagram(id, diagram);
     }
 
+    //Delete Diagram
     @DeleteMapping(value = "/delete/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PreAuthorize("hasAuthorities('DELETE')")
