@@ -47,8 +47,19 @@ public class SecurityConfig {
                             http.requestMatchers(HttpMethod.GET, "/auth/concessionaire/{id}").hasAnyRole("DEVELOPER", "ADMIN");
                             http.requestMatchers(HttpMethod.POST, "/auth/concessionaire/create").hasAnyRole("DEVELOPER", "ADMIN");
                             http.requestMatchers(HttpMethod.PUT, "/auth/concessionaire/update/{id}").hasAnyRole("DEVELOPER", "ADMIN");
-                            http.requestMatchers(HttpMethod.DELETE, "/auth/concessionaire/delete/{id}").hasAnyRole("DEVELOPER");
+                            http.requestMatchers(HttpMethod.DELETE, "/auth/concessionaire/delete/{id}").hasAnyRole("DEVELOPER", "ADMIN");
 
+                            http.requestMatchers(HttpMethod.GET, "/auth/item/list").hasAuthority("READ");
+                            http.requestMatchers(HttpMethod.GET, "/auth/item/{id}").hasAnyRole("DEVELOPER", "ADMIN");
+                            http.requestMatchers(HttpMethod.POST, "/auth/item/create").hasAnyRole("DEVELOPER", "ADMIN");
+                            http.requestMatchers(HttpMethod.PUT, "/auth/item/update/{id}").hasAnyRole("DEVELOPER", "ADMIN");
+                            http.requestMatchers(HttpMethod.DELETE, "/auth/item/delete/{id}").hasAnyRole("DEVELOPER", "ADMIN");
+
+                            http.requestMatchers(HttpMethod.GET, "/auth/model/list").hasAuthority("READ");
+                            http.requestMatchers(HttpMethod.GET, "/auth/model/{id}").hasAuthority("READ");
+                            http.requestMatchers(HttpMethod.POST, "/auth/model/create").hasAnyRole("DEVELOPER", "ADMIN");
+                            http.requestMatchers(HttpMethod.PUT, "/auth/model/update/{id}").hasAnyRole("DEVELOPER", "ADMIN");
+                            http.requestMatchers(HttpMethod.DELETE, "/auth/model/delete/{id}").hasAnyRole("DEVELOPER", "ADMIN");
 
                             http.anyRequest().denyAll();
                         }
