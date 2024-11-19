@@ -1,6 +1,5 @@
 package com.agarciao.backcatalog.service.vehicle;
 
-import com.agarciao.backcatalog.controller.user.BrandController;
 import com.agarciao.backcatalog.persistence.entity.vehicle.BrandEntity;
 import com.agarciao.backcatalog.persistence.repository.BrandRepository;
 import org.springframework.beans.factory.annotation.Autowired;
