@@ -15,7 +15,7 @@ public class DiagramService {
     @Autowired
     private DiagramRepository diagramRepository;
 
-    public List<DiagramEntity> diagramList(){
+    public List<DiagramEntity> getsDiagramList(){
         return diagramRepository.findAll();
     }
 

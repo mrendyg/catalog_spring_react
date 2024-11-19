@@ -5,6 +5,7 @@ import com.agarciao.backcatalog.service.user.ConcessionaireService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,6 +21,7 @@ public class ConcessionaireController {
     @GetMapping("/list")
     @ResponseStatus(HttpStatus.OK)
     @PreAuthorize("hasRole('ADMIN') or hasRole('DEVELOPER')")
+
     public List<ConcessionaireEntity> getListConcessionarie(){
         return concessionaireService.getsListConcessionaire();
     }
@@ -41,6 +43,7 @@ public class ConcessionaireController {
     @PutMapping("/update/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
     @PreAuthorize("hasRole('ADMIN') or hasRole('DEVELOPER')")
+
     public ConcessionaireEntity updateConcessionaire(@PathVariable long id, @RequestBody ConcessionaireEntity concessionaire){
         return concessionaireService.updatesConcessionaire(id, concessionaire);
     }
@@ -48,7 +51,9 @@ public class ConcessionaireController {
     @DeleteMapping("/delete/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PreAuthorize("hasRole('ADMIN') or hasRole('DEVELOPER')")
-    public void deleteConcessionaire(@PathVariable long id){
+
+    public void deleteConcessionaire(@PathVariable Long id){
         concessionaireService.deletesConcessionaire(id);
     }
+
 }
