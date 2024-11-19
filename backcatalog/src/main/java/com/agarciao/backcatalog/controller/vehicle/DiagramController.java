@@ -18,8 +18,8 @@ public class DiagramController {
     @GetMapping("/list")
     @PreAuthorize("hasAuthority('READ')")
     @ResponseStatus(HttpStatus.OK)
-    public Iterable<DiagramEntity> DiagramGetId(){
-        return diagramService.diagramList();
+    public Iterable<DiagramEntity> diagramList(){
+        return diagramService.getsDiagramList();
     }
 
     @GetMapping("/{id}")
