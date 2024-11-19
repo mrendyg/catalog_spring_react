@@ -45,6 +45,7 @@ public class BrandController {
         return brandService.updatesBrand(id, brand);
     }
 
+
     @DeleteMapping("/delete/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
     @PreAuthorize("hasRole('ADMIN') or hasRole('DEVELOPER')")
