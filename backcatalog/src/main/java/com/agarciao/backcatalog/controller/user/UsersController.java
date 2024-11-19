@@ -21,11 +21,13 @@ public class UsersController {
 
     //Lista de usuarios
     private UserRepository userRepository;
+
+
     @GetMapping("/list")
     @ResponseStatus(HttpStatus.OK)
     @PreAuthorize("hasRole('ADMIN') or hasRole('DEVELOPER')")
     public Iterable<UserEntity> userList(){
-        return userRepository.findAll();
+        return userService.findAll();
     }
 
     //busqueda de ususarios por ID
@@ -37,8 +39,13 @@ public class UsersController {
     }
 
     //CReacion de usuarios
+<<<<<<< HEAD
     @PostMapping(value = "/create")
     @ResponseStatus(HttpStatus.OK)
+=======
+    @PostMapping(value = "/update/{id}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+>>>>>>> d3118a9d8db03d9761765bad310b87b5142f054e
     @PreAuthorize("hasRole('ADMIN') or hasRole('DEVELOPER')")
     public UserEntity createUser(@RequestBody UserDTO userDTO){
         UserEntity user = new UserEntity();
