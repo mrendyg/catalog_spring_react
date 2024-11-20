@@ -25,46 +25,64 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
         return httpSecurity
-                .csrf(csrf -> csrf.disable())
-                .httpBasic(Customizer.withDefaults())
-                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authorizeHttpRequests(
-                        http -> {
+            .csrf(csrf -> csrf.disable())
+            .httpBasic(Customizer.withDefaults())
+            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+            .authorizeHttpRequests(
+                http -> {
 
-                            http.requestMatchers(HttpMethod.GET, "/auth/users/list").hasAnyRole("DEVELOPER", "ADMIN");
-                            http.requestMatchers(HttpMethod.GET, "/auth/users/{id}").hasAnyRole("DEVELOPER", "ADMIN");
-                            http.requestMatchers(HttpMethod.POST, "/auth/users/create").hasAnyRole("DEVELOPER", "ADMIN");
-                            http.requestMatchers(HttpMethod.PUT, "/auth/users/update/{id}").hasAnyRole("DEVELOPER", "ADMIN");
-                            http.requestMatchers(HttpMethod.DELETE, "/auth/users/delete/{id}").hasAnyRole("DEVELOPER");
+                    http.requestMatchers(HttpMethod.GET, "/auth/users/list").hasAnyRole("DEVELOPER", "ADMIN");
+                    http.requestMatchers(HttpMethod.GET, "/auth/users/{id}").hasAnyRole("DEVELOPER", "ADMIN");
+                    http.requestMatchers(HttpMethod.POST, "/auth/users/create").hasAnyRole("DEVELOPER", "ADMIN");
+                    http.requestMatchers(HttpMethod.PUT, "/auth/users/update/{id}").hasAnyRole("DEVELOPER", "ADMIN");
+                    http.requestMatchers(HttpMethod.DELETE, "/auth/users/delete/{id}").hasAnyRole("DEVELOPER");
 
-                            http.requestMatchers(HttpMethod.GET, "/auth/diagram/list").hasAnyAuthority("READ");
-                            http.requestMatchers(HttpMethod.GET, "/auth/diagram/{id}").hasAnyAuthority("READ");
-                            http.requestMatchers(HttpMethod.POST, "/auth/diagram/create").hasAnyRole("DEVELOPER", "ADMIN");
-                            http.requestMatchers(HttpMethod.PUT, "/auth/diagram/update/{id}").hasAnyRole("DEVELOPER", "ADMIN");
-                            http.requestMatchers(HttpMethod.DELETE, "/auth/diagram/delete/{id}").hasAnyRole("DEVELOPER");
+                    http.requestMatchers(HttpMethod.GET, "/auth/concessionaire/list").hasAnyRole("DEVELOPER", "ADMIN");
+                    http.requestMatchers(HttpMethod.GET, "/auth/concessionaire/{id}").hasAnyRole("DEVELOPER", "ADMIN");
+                    http.requestMatchers(HttpMethod.POST, "/auth/concessionaire/create").hasAnyRole("DEVELOPER", "ADMIN");
+                    http.requestMatchers(HttpMethod.PUT, "/auth/concessionaire/update/{id}").hasAnyRole("DEVELOPER", "ADMIN");
+                    http.requestMatchers(HttpMethod.DELETE, "/auth/concessionaire/delete/{id}").hasAnyRole("DEVELOPER", "ADMIN");
 
-                            http.requestMatchers(HttpMethod.GET, "/auth/concessionaire/list").hasAnyRole("DEVELOPER", "ADMIN");
-                            http.requestMatchers(HttpMethod.GET, "/auth/concessionaire/{id}").hasAnyRole("DEVELOPER", "ADMIN");
-                            http.requestMatchers(HttpMethod.POST, "/auth/concessionaire/create").hasAnyRole("DEVELOPER", "ADMIN");
-                            http.requestMatchers(HttpMethod.PUT, "/auth/concessionaire/update/{id}").hasAnyRole("DEVELOPER", "ADMIN");
-                            http.requestMatchers(HttpMethod.DELETE, "/auth/concessionaire/delete/{id}").hasAnyRole("DEVELOPER", "ADMIN");
+                    http.requestMatchers(HttpMethod.GET, "/auth/brand/list").hasAuthority("READ");
+                    http.requestMatchers(HttpMethod.GET, "/auth/brand/{id}").hasAuthority("READ");
+                    http.requestMatchers(HttpMethod.POST, "/auth/brand/create").hasAnyRole("DEVELOPER", "ADMIN");
+                    http.requestMatchers(HttpMethod.PUT, "/auth/brand/update/{id}").hasAnyRole("DEVELOPER", "ADMIN");
+                    http.requestMatchers(HttpMethod.DELETE, "/auth/brand/delete/{id}").hasRole("DEVELOPER");
 
-                            http.requestMatchers(HttpMethod.GET, "/auth/item/list").hasAuthority("READ");
-                            http.requestMatchers(HttpMethod.GET, "/auth/item/{id}").hasAnyRole("DEVELOPER", "ADMIN");
-                            http.requestMatchers(HttpMethod.POST, "/auth/item/create").hasAnyRole("DEVELOPER", "ADMIN");
-                            http.requestMatchers(HttpMethod.PUT, "/auth/item/update/{id}").hasAnyRole("DEVELOPER", "ADMIN");
-                            http.requestMatchers(HttpMethod.DELETE, "/auth/item/delete/{id}").hasAnyRole("DEVELOPER", "ADMIN");
+                    http.requestMatchers(HttpMethod.GET, "/auth/category/list").hasAuthority("READ");
+                    http.requestMatchers(HttpMethod.GET, "/auth/category/{id}").hasAuthority("READ");
+                    http.requestMatchers(HttpMethod.POST, "/auth/category/create").hasAnyRole("DEVELOPER", "ADMIN");
+                    http.requestMatchers(HttpMethod.PUT, "/auth/brand/category/{id}").hasAnyRole("DEVELOPER", "ADMIN");
+                    http.requestMatchers(HttpMethod.DELETE, "/auth/category/delete/{id}").hasRole("DEVELOPER");
 
-                            http.requestMatchers(HttpMethod.GET, "/auth/model/list").hasAuthority("READ");
-                            http.requestMatchers(HttpMethod.GET, "/auth/model/{id}").hasAuthority("READ");
-                            http.requestMatchers(HttpMethod.POST, "/auth/model/create").hasAnyRole("DEVELOPER", "ADMIN");
-                            http.requestMatchers(HttpMethod.PUT, "/auth/model/update/{id}").hasAnyRole("DEVELOPER", "ADMIN");
-                            http.requestMatchers(HttpMethod.DELETE, "/auth/model/delete/{id}").hasAnyRole("DEVELOPER", "ADMIN");
+                    http.requestMatchers(HttpMethod.GET, "/auth/diagram/list").hasAuthority("READ");
+                    http.requestMatchers(HttpMethod.GET, "/auth/diagram/{id}").hasAuthority("READ");
+                    http.requestMatchers(HttpMethod.POST, "/auth/diagram/create").hasAuthority("CREATE");
+                    http.requestMatchers(HttpMethod.PUT, "/auth/brand/update/{id}").hasAuthority("UPDATE");
+                    http.requestMatchers(HttpMethod.DELETE, "/auth/diagram/delete/{id}").hasAuthority("DELETE");
 
-                            http.anyRequest().denyAll();
-                        }
-                )
-                .build();
+                    http.requestMatchers(HttpMethod.GET, "/auth/item/list").hasAuthority("READ");
+                    http.requestMatchers(HttpMethod.GET, "/auth/item/{id}").hasAuthority("READ");
+                    http.requestMatchers(HttpMethod.POST, "/auth/item/create").hasAuthority("CREATE");
+                    http.requestMatchers(HttpMethod.PUT, "/auth/item/update/{id}").hasAuthority("UPDATE");
+                    http.requestMatchers(HttpMethod.DELETE, "/auth/item/delete/{id}").hasAnyRole("ADMIN", "DEVELOPER");
+
+                    http.requestMatchers(HttpMethod.GET, "/auth/model/list").hasAuthority("READ");
+                    http.requestMatchers(HttpMethod.GET, "/auth/model/{id}").hasAuthority("READ");
+                    http.requestMatchers(HttpMethod.POST, "/auth/model/create").hasAnyRole("ADMIN", "DEVELOPER");
+                    http.requestMatchers(HttpMethod.PUT, "/auth/model/update/{id}").hasAnyRole("ADMIN", "DEVELOPER");
+                    http.requestMatchers(HttpMethod.DELETE, "/auth/model/delete/{id}").hasAnyRole("ADMIN", "DEVELOPER");
+
+                    http.requestMatchers(HttpMethod.GET, "/auth/vehicle/list").hasAuthority("READ");
+                    http.requestMatchers(HttpMethod.GET, "/auth/vehicle/{id}").hasAuthority("READ");
+                    http.requestMatchers(HttpMethod.POST, "/auth/vehicle/create").hasAnyRole("ADMIN", "DEVELOPER");
+                    http.requestMatchers(HttpMethod.PUT, "/auth/vehicle/update/{id}").hasAnyRole("ADMIN", "DEVELOPER");
+                    http.requestMatchers(HttpMethod.DELETE, "/auth/vehicle/delete/{id}").hasAnyRole("ADMIN", "DEVELOPER");
+
+                    http.anyRequest().denyAll();
+                }
+            )
+            .build();
     }
 
     @Bean

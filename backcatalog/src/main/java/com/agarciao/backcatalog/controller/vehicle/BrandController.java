@@ -53,7 +53,7 @@ public class BrandController {
     //Delete brand by id
     @DeleteMapping("/delete/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    @PreAuthorize("hasRole('ADMIN') or hasRole('DEVELOPER')")
+    @PreAuthorize("hasRole('DEVELOPER')")
     public void deleteBrand(@PathVariable long id){
         brandService.deletesBrand(id);
     }

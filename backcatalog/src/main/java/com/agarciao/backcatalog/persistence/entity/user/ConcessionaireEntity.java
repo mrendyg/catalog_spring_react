@@ -24,8 +24,8 @@ public class ConcessionaireEntity {
     @ManyToMany
     @JoinTable(
             name = "concessionaire_brand",
-            joinColumns = @JoinColumn(name = "brand_id"),
-            inverseJoinColumns = @JoinColumn(name = "concessionaire_id")
+            joinColumns = @JoinColumn(name = "concessionaire_id"),
+            inverseJoinColumns = @JoinColumn(name = "brand_id")
     )
     private Set<BrandEntity> brand;
 }
