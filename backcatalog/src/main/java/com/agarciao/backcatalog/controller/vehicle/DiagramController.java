@@ -26,7 +26,7 @@ public class DiagramController {
 
     //Diagram by id
     @GetMapping("/{id}")
-    @PreAuthorize("hasAuthorities('READ')")
+    @PreAuthorize("hasAuthority('READ')")
     @ResponseStatus(HttpStatus.OK)
     public DiagramEntity diagramGetId(@PathVariable long id){
         return diagramService.getsIdDiagram(id);
@@ -35,7 +35,7 @@ public class DiagramController {
     //Create Diagram
     @PostMapping(value = "/create")
     @ResponseStatus(HttpStatus.CREATED)
-    @PreAuthorize("hasAuthorities('CREATE')")
+    @PreAuthorize("hasAuthority('CREATE')")
     public DiagramEntity createDiagram(@RequestBody DiagramEntity diagram){
         return diagramService.createsDiagram(diagram);
     }
@@ -43,7 +43,7 @@ public class DiagramController {
     //Update Diagram
     @PutMapping(value = "/update/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    @PreAuthorize("hasAuthorities('UPDATE')")
+    @PreAuthorize("hasAuthority('UPDATE')")
     public DiagramEntity updateDiagram(@PathVariable long id, @RequestBody DiagramEntity diagram){
         return diagramService.updatesDiagram(id, diagram);
     }
@@ -51,7 +51,7 @@ public class DiagramController {
     //Delete Diagram
     @DeleteMapping(value = "/delete/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @PreAuthorize("hasAuthorities('DELETE')")
+    @PreAuthorize("hasAuthority('DELETE')")
     public void deleteDiagram(@PathVariable long id){
         diagramService.deletesDiagram(id);
     }

@@ -21,7 +21,6 @@ public class DiagramEntity {
     private Long id;
 
     private String name;
-
     private String image;
 
     @ManyToOne
