@@ -10,6 +10,8 @@ INSERT INTO public.brand(
     (8, 'Camioneta electrica', 'Riddara', 'https://res.cloudinary.com/dmznj1w51/image/upload/v1732130941/riddata_logo_ezsaem.png',
     (9, 'Motos', 'Lifan Motos', 'https://res.cloudinary.com/dmznj1w51/image/upload/v1732129539/Lifan-logo_cnc24e.png');
 
+
+
 INSERT INTO public.category(
 	id, name)
 	VALUES (1, 'SISTEMA DE MOTOR'),
@@ -42,9 +44,9 @@ INSERT INTO public.concessionaire_brand(
 	(6, 2);
 
 INSERT INTO public.model(
-    id, description, name, brand_id, image)
-    VALUES (1, '1.5', 'T3', 1, 'https://res.cloudinary.com/dmznj1w51/image/upload/v1732198745/T3_gdsxqs.png'),
-   (2, '1.6', 'T3', 1, 'https://res.cloudinary.com/dmznj1w51/image/upload/v1732198745/T3_gdsxqs.png'),
-   (3, '1.5', 'X5', 1, 'https://res.cloudinary.com/dmznj1w51/image/upload/v1732199948/kyc-x5_bxnqrk.png'),
-   (4, '1.8', 'X5 PLUS', 1, 'https://res.cloudinary.com/dmznj1w51/image/upload/v1732200032/KYC-X5-PLUS_qmnm76.png'),
-   (5, 'DLX 4X4', 'Terralord', 2, 'https://res.cloudinary.com/dmznj1w51/image/upload/v1732200138/zxauto-terralord_zyqktl.png');
+	id, description, name, brand_id)
+	VALUES (1, '1.5', 'T3', 1),
+	(2, '1.6', 'T3', 1),
+	(3, '1.5', 'X5', 1),
+    (4, '1.8', 'X5 PLUS', 1),
+    (5, 'DLX 4X4', 'Terralord', 2);
