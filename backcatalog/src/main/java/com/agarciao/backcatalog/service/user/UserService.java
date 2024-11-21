@@ -1,5 +1,6 @@
 package com.agarciao.backcatalog.service.user;
 
+import com.agarciao.backcatalog.persistence.DTO.UserDTO;
 import com.agarciao.backcatalog.persistence.entity.user.UserEntity;
 import com.agarciao.backcatalog.persistence.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -64,6 +65,16 @@ public class UserService {
         } else {
             throw new EntityNotFoundException("Usuario no encontrado");
         }
+    }
+
+    //Metodo para comprobar las credenciales del uruario
+    public boolean validationUser(String username, String password){
+        UserEntity user = userRepository.findUserEntityByusername(username).get();
+        if (user != null){
+            //Comparar las contraseñas, usando BCryptPasswordEncoder
+            return passwordEncoder.matches(password, user.getPassword());
+        }
+        return false;
     }
 
 }
