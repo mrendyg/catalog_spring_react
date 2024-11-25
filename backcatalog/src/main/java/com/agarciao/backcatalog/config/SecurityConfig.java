@@ -33,7 +33,7 @@ public class SecurityConfig {
             .authorizeHttpRequests(
                 http -> {
 
-                    http.requestMatchers(HttpMethod.GET, "/login").permitAll();
+                    http.requestMatchers(HttpMethod.POST, "/auth/login").permitAll();
 
                     http.requestMatchers(HttpMethod.GET, "/auth/users/list").hasAnyRole("DEVELOPER", "ADMIN");
                     http.requestMatchers(HttpMethod.GET, "/auth/users/{id}").hasAnyRole("DEVELOPER", "ADMIN");
