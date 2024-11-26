@@ -2,8 +2,6 @@ package com.agarciao.backcatalog.controller.user;
 
 import com.agarciao.backcatalog.service.user.LoginRequest;
 import com.agarciao.backcatalog.service.user.UserDetailsServiceImpl;
-import lombok.Getter;
-import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -24,23 +22,24 @@ public class AuthenticationController {
     @Autowired
     private UserDetailsServiceImpl userDetailsService;
 
-    // Endpoint para autenticar al usuario
+    // Endpoint to authenticate the user
     @PostMapping("/login")
     public String login(@RequestBody LoginRequest loginRequest) {
 
         String username = loginRequest.getUsername();
         String password = loginRequest.getPassword();
 
-        // Crear un token de autenticación con el nombre de usuario y la contraseña
+        // Create an authentication token with the username and password
         UsernamePasswordAuthenticationToken authenticationToken =
                 new UsernamePasswordAuthenticationToken(username, password);
-        // Autenticar el token
+
+        //Authenticate the token
         Authentication authentication = authenticationManager.authenticate(authenticationToken);
 
-        // Establecer el contexto de seguridad para el usuario autenticado
+        // Set the security context for the authenticated user
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
-        // Respuesta exitosa (puedes personalizar esto, agregar un JWT, etc.)
+        //Successful answer
         return "Usuario autenticado con éxito";
     }
 
