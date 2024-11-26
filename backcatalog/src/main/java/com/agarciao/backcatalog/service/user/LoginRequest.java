@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-// Clase interna para mapear el JSON de la solicitud
+// Internal class to map the JSON of the request
 public class LoginRequest {
     private String username;
     private String password;
