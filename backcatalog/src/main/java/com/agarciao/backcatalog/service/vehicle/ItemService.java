@@ -2,7 +2,7 @@ package com.agarciao.backcatalog.service.vehicle;
 
 import com.agarciao.backcatalog.persistence.entity.vehicle.ItemEntity;
 import com.agarciao.backcatalog.persistence.repository.ItemRepository;
-import org.jetbrains.annotations.NotNull;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -3,8 +3,7 @@ package com.agarciao.backcatalog.service.vehicle;
 import com.agarciao.backcatalog.persistence.entity.vehicle.DiagramEntity;
 import com.agarciao.backcatalog.persistence.repository.DiagramRepository;
 import jakarta.persistence.EntityNotFoundException;
-import lombok.NonNull;
-import org.jetbrains.annotations.NotNull;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
