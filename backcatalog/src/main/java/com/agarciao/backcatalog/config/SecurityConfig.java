@@ -18,10 +18,12 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
+@CrossOrigin
 public class SecurityConfig {
 
     @Bean
@@ -112,5 +114,7 @@ public class SecurityConfig {
 //        System.out.println(new BCryptPasswordEncoder().encode("1234"));
 ////        metodo de encriptacion de textos, se debe mejorar para configurar en cada password registrada
 //    }
+
+
 
 }
