@@ -12,6 +12,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
+import java.util.Map;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -38,7 +39,7 @@ public class JwtUtils {
                 .withSubject(username)
                 .withClaim("authorities", authorities)
                 .withIssuedAt(new Date())
-                .withExpiresAt(new Date(System.currentTimeMillis() + 1800000))
+                .withExpiresAt(new Date(System.currentTimeMillis() + 1200000))
                 .withJWTId(UUID.randomUUID().toString())
                 .withNotBefore(new Date(System.currentTimeMillis()))
                 .sign(algorithm);
@@ -67,6 +68,10 @@ public class JwtUtils {
 
     public Claim getSpecificClaim(DecodedJWT decodedJWT, String claimName){
         return decodedJWT.getClaim(claimName);
+    }
+
+    public Map<String, Claim> returnAllClaim(DecodedJWT decodedJWT){
+        return decodedJWT.getClaims();
     }
 
 }

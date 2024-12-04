@@ -21,7 +21,7 @@ import java.util.Collection;
 
 public class JwtTokenValidator extends OncePerRequestFilter {
 
-    private JwtUtils jwtUtils;
+    private final JwtUtils jwtUtils;
 
     public JwtTokenValidator(JwtUtils jwtUtils){
         this.jwtUtils = jwtUtils;
@@ -40,7 +40,7 @@ public class JwtTokenValidator extends OncePerRequestFilter {
             DecodedJWT decodedJWT = jwtUtils.validateToken(jwtToken);
 
             String username = jwtUtils.extractUsername(decodedJWT);
-            String stringAuthorities =jwtUtils.getSpecificClaim(decodedJWT, "authorities").asString();
+            String stringAuthorities = jwtUtils.getSpecificClaim(decodedJWT, "authorities").asString();
 
             Collection<? extends GrantedAuthority> authorities = AuthorityUtils.commaSeparatedStringToAuthorityList(stringAuthorities);
 
