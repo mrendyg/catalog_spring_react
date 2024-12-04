@@ -1,6 +1,9 @@
 package com.agarciao.backcatalog.config;
 
+import com.agarciao.backcatalog.config.filter.JwtTokenValidator;
 import com.agarciao.backcatalog.service.user.UserDetailsServiceImpl;
+import com.agarciao.backcatalog.util.JwtUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -18,6 +21,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 @Configuration
@@ -25,6 +29,9 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @EnableMethodSecurity
 @CrossOrigin
 public class SecurityConfig {
+
+    @Autowired
+    private JwtUtils jwtUtils;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
@@ -88,7 +95,7 @@ public class SecurityConfig {
                     http.anyRequest().denyAll();
                 }
             )
-
+            .addFilterBefore(new JwtTokenValidator(jwtUtils), BasicAuthenticationFilter.class)
             .build();
     }
 
