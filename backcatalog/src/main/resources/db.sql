@@ -7,7 +7,7 @@ INSERT INTO public.brand(
     (5, 'Vehiculo de pasajeros y Vehiculos comerciales', 'LIFAN', 'https://res.cloudinary.com/dmznj1w51/image/upload/v1732129539/Lifan-logo_cnc24e.png'),
     (6, 'Vehiculos comerciales', 'DFCA', 'https://res.cloudinary.com/dmznj1w51/image/upload/v1732129707/logo_dongfeng_puhu1h.png'),
     (7, 'Vehiculo de pasajeros', 'Link & Co', 'https://res.cloudinary.com/dmznj1w51/image/upload/v1732130778/link_co_rn5cri.png'),
-    (8, 'Camioneta electrica', 'Riddara', 'https://res.cloudinary.com/dmznj1w51/image/upload/v1732130941/riddata_logo_ezsaem.png',
+    (8, 'Camioneta electrica', 'Riddara', 'https://res.cloudinary.com/dmznj1w51/image/upload/v1732130941/riddata_logo_ezsaem.png'),
     (9, 'Motos', 'Lifan Motos', 'https://res.cloudinary.com/dmznj1w51/image/upload/v1732129539/Lifan-logo_cnc24e.png');
 
 INSERT INTO public.category(
