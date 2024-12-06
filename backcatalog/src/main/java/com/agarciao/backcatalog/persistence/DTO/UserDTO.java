@@ -1,5 +1,6 @@
 package com.agarciao.backcatalog.persistence.DTO;
 
+import com.agarciao.backcatalog.persistence.entity.user.RoleEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
