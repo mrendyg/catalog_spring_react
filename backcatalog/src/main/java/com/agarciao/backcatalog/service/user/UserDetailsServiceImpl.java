@@ -22,6 +22,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -29,6 +31,9 @@ import java.util.stream.Collectors;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
+
+    LocalDateTime currentDateTime = LocalDateTime.now();
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     @Autowired
     private JwtUtils jwtUtils;
@@ -72,6 +77,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
         String username = createUserRequest.username();
         String password = createUserRequest.password();
+        String date = currentDateTime.format(formatter);
         List<String> rolesRequest = createUserRequest.roleRequest().roleListName();
 
         Set<RoleEntity> roleEntityList = roleRepository.findRoleEntitiesByRoleEnumIn(rolesRequest).stream().collect(Collectors.toSet());
@@ -101,21 +107,23 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
         String accessToken = jwtUtils.createToken(authentication);
 
-        AuthResponse authResponse = new AuthResponse(username, "User created successfully", accessToken, true);
+        AuthResponse authResponse = new AuthResponse(username, "User created successfully", date, accessToken, true);
         return authResponse;
 
     }
 
     public AuthResponse loginUser (AuthLoginRequest authLoginRequest){
 
+
         String username = authLoginRequest.username();
         String password = authLoginRequest.password();
+        String date = currentDateTime.format(formatter);
 
         Authentication authentication = this.authenticate(username, password);
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
         String accessToken = jwtUtils.createToken(authentication);
-        AuthResponse authResponse = new AuthResponse(username, "User loged succesfully", accessToken, true);
+        AuthResponse authResponse = new AuthResponse(username, "User loged succesfully", date, accessToken, true);
 
         return authResponse;
     }
