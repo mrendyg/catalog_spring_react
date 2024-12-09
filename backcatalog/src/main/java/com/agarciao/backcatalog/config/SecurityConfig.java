@@ -42,6 +42,7 @@ public class SecurityConfig {
             .authorizeHttpRequests(
                 http -> {
 
+                    //Endpoints
                     http.requestMatchers(HttpMethod.POST, "/auth/**").permitAll();
 
                     http.requestMatchers(HttpMethod.GET, "/auth/users/list").hasAnyRole("DEVELOPER", "ADMIN");

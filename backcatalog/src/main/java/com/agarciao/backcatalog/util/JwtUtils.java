@@ -25,15 +25,22 @@ public class JwtUtils {
     @Value("${security.jwt.user.generator}")
     private String userGenerator;
 
+    //fuction for create the Token
     public String createToken(Authentication authentication){
+
+        //Encrypted the privatekey in the token
         Algorithm algorithm = Algorithm.HMAC256(this.privateKey);
 
+        //get the username
         String username = authentication.getPrincipal().toString();
+
+        //get the authorities
         String authorities = authentication.getAuthorities()
                 .stream()
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.joining(","));
 
+        //Creanted of JWT
         String jwtToken = JWT.create()
                 .withIssuer(this.userGenerator)
                 .withSubject(username)
@@ -46,21 +53,26 @@ public class JwtUtils {
         return jwtToken;
     }
 
+    //Fuction for validate token
     public DecodedJWT validateToken (String token){
         try {
             Algorithm algorithm = Algorithm.HMAC256(this.privateKey);
 
+            //Created the verifier
             JWTVerifier verifier = JWT.require(algorithm)
                     .withIssuer(this.userGenerator)
                     .build();
 
+            //Verifier the token
             DecodedJWT decodedJWT = verifier.verify(token);
             return decodedJWT;
+
         } catch (JWTVerificationException exception){
             throw new JWTVerificationException("Token invalid, not Authorized");
         }
     }
 
+    //get te username from the token
     public String extractUsername(DecodedJWT decodedJWT){
         return decodedJWT.getSubject().toString();
     }
