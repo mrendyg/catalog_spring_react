@@ -20,8 +20,8 @@ public class BackcatalogApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(BackcatalogApplication.class, args);
 	}
-//
-//
+
+
 //	@Bean
 //	CommandLineRunner init(UserRepository userRepository){
 //		return args -> {

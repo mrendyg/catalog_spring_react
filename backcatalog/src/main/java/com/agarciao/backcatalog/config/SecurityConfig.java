@@ -96,6 +96,8 @@ public class SecurityConfig {
                     http.anyRequest().denyAll();
                 }
             )
+            .formLogin(Customizer.withDefaults())
+            .oauth2Client(Customizer.withDefaults())
             .addFilterBefore(new JwtTokenValidator(jwtUtils), BasicAuthenticationFilter.class)
             .build();
     }
