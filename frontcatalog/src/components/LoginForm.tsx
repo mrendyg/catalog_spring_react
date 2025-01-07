@@ -38,9 +38,9 @@ const LoginForm = () =>{
 
 
     return(
-        <div className="flex flex-col items-center justify-center bg-[#3DB1EB] px-6 py-8 mx-auto md:h-[600px] lg:py-0">
+        <div className="bg-[#D6D6D6] h-[32rem] ">
             
-            <div className="w-full md:w-[400px] lg:w-[500px] md:mt-0 sm:max-w-md xl:p-0">
+            <div className="w-full bg-[#3DB1EB] md:w-[400px] lg:w-[500px] md:mt-0 sm:max-w-md xl:p-0">
                 <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
                     <h1 className="text-xl text-center text-[#FFFFFF] font-bold leading-tight tracking-tight md:text-2xl ">
                         Iniciar sesión
@@ -50,7 +50,9 @@ const LoginForm = () =>{
                     // onSubmit={handleSubmit}
                     >
                         <div>
-                            <label htmlFor="email" className="block mb-2 text-sm font-medium text-[#FFFFFF]">Usuario</label>
+                            <label htmlFor="email" className="block mb-2 text-sm font-medium text-[#FFFFFF]">
+                                Usuario
+                            </label>
                             <input type="email" name="email" id="email"
                             // value={email}
                             // onChange={(e) => setEmail(e.target.value)}
@@ -58,7 +60,9 @@ const LoginForm = () =>{
                         </div>
 
                         <div>
-                            <label htmlFor="password" className="block mb-2 text-sm font-medium text-[#FFFFFF]">Contraseña</label>
+                            <label htmlFor="password" className="block mb-2 text-sm font-medium text-[#FFFFFF]">
+                                Contraseña
+                            </label>
                             <input type="password" name="password" id="password" 
                                 // value={password}
                                 // onChange={(e) => setPassword(e.target.value)}

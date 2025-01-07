@@ -4,7 +4,7 @@
 const Header = () =>{
     return(
         <p>
-            Text test
+            header text
         </p>
 
     )
