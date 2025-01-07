@@ -48,3 +48,9 @@ INSERT INTO public.model(
    (3, '1.5', 'X5', 1, 'https://res.cloudinary.com/dmznj1w51/image/upload/v1732199948/kyc-x5_bxnqrk.png'),
    (4, '1.8', 'X5 PLUS', 1, 'https://res.cloudinary.com/dmznj1w51/image/upload/v1732200032/KYC-X5-PLUS_qmnm76.png'),
    (5, 'DLX 4X4', 'Terralord', 2, 'https://res.cloudinary.com/dmznj1w51/image/upload/v1732200138/zxauto-terralord_zyqktl.png');
+
+INSERT INTO public.users(
+	id, data_time_create, account_no_expired, account_no_locked, credential_no_expired, is_enable, password, username)
+	VALUES (1, NOW(), true, true, true, true, '$2a$10$nbUS.NBQi9M87Zd/Hw3qzOnuvB314pia8WHLxMdu13ak4qtwYlmx2', 'Andy'?),
+	(2, NOW(), true, true, true, true, '$2a$10$nbUS.NBQi9M87Zd/Hw3qzOnuvB314pia8WHLxMdu13ak4qtwYlmx2', 'Cristian'),
+	(3, NOW(), true, true, true, true, '$2a$10$nbUS.NBQi9M87Zd/Hw3qzOnuvB314pia8WHLxMdu13ak4qtwYlmx2', 'David');

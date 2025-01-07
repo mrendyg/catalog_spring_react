@@ -1,7 +1,7 @@
 
 import { useMutation } from "@tanstack/react-query";
 import { loginRequest } from "../service/api/user";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { useState } from "react";
 
@@ -38,7 +38,7 @@ const LoginForm = () =>{
 
 
     return(
-        <div className="bg-[#D6D6D6] h-[32rem] ">
+        
             
             <div className="w-full bg-[#3DB1EB] md:w-[400px] lg:w-[500px] md:mt-0 sm:max-w-md xl:p-0">
                 <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
@@ -71,11 +71,15 @@ const LoginForm = () =>{
 
                         <button type="submit" className="w-full text-white bg-[#3D7AEB] hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Iniciar sesion</button>
 
+                        <div>
+                            <p className="text-white">¿Eres nuevo?</p>
+                            <Link to={`/contact`} className="text-white hover:text-[#3D43EB] ">Contacto</Link>
+                        </div>
 
                     </form>
                 </div>
             </div>
-        </div>
+     
 
     )
 }

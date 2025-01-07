@@ -7,7 +7,7 @@ const Layout = () =>{
         <div>
         <Toaster />
         <Header />
-        <div className="min-h-[62.5rem] bg-[#8d8d8d]">
+        <div className="min-h-[62.5rem] bg-[#d2d2d2]">
         
             <Outlet />
   
