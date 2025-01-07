@@ -1,23 +1,26 @@
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
+
 import Layout from './components/Layout'
 import LoginPage from './pages/LoginPage'
+
 
 function App() {
 
 
   return (
     <BrowserRouter>
-      <Routes>
 
+    
+    <Routes>
       <Route path='/' element={<Layout />}>
 
         <Route path='/login' element={<LoginPage />}/>
-      
+
       </Route>
-      
-      </Routes>
+    </Routes>
+
     </BrowserRouter>
   )
 }
