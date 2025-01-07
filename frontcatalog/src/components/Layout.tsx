@@ -1,21 +1,21 @@
 import { Toaster } from "react-hot-toast"
 import { Outlet } from "react-router-dom"
-import Header from "./Header";
+import Header from "./Header"
 
-const Layout = () => {
 
+const Layout = () =>{
     return(
-        <>
         <div>
         <Toaster />
         <Header />
-        <div className="min-h-[1000px] bg-[#ff5733]">
-
+        <div className="min-h-[1000px] bg-[#fff8f7]">
+        
             <Outlet />
+  
+          
+        </div>
+      </div>
 
-        </div>
-        </div>
-        </>
     )
 }
 

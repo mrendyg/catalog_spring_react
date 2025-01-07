@@ -1,12 +1,16 @@
 import LoginForm from "../components/LoginForm";
 
 
-const LoginPage = () =>{
 
+const LoginPage = () =>{
     return(
         <>
-        <h1 className="text-[4rem]">Login</h1>
+        
+
         <LoginForm />
+
+        
+
         </>
     )
 }

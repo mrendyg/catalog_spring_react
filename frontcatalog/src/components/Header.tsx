@@ -1,10 +1,12 @@
 
 
-const Header = () => {
-    return(
-        <>
 
-        </>
+const Header = () =>{
+    return(
+        <p>
+            Text test
+        </p>
+
     )
 }
 
